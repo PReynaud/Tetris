@@ -1,5 +1,5 @@
 package tetris;
 
-public class Grille {
+public class Grille extends Bloc{
     
 }
