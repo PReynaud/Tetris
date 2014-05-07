@@ -14,10 +14,10 @@ public class Grille {
     public boolean estEnBas(Piece p) {
         int x = p.getX();
         int y = p.getY();
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < p.getLargeur(); i++) {
+            for (int j = 0; j < p.getLongueur(); j++) {
                 if ((p.getMatrice()[i][j].getCouleur() != 0)
-                    && ((j == 2) || (p.getMatrice()[i][j].getCouleur() != 0))
+                    && ((j == p.getLongueur() - 1) || (p.getMatrice()[i][j].getCouleur() != 0))
                     && (this.grille_jeu[x+i][y+i+1].getCouleur() != 0)) {
                     return true;
                 }
