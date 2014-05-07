@@ -41,9 +41,9 @@ public class FenetrePrincipale extends JFrame {
         //JMenu jm = new JMenu();
         JMenuBar jm = new JMenuBar();
         
-        JMenu m = new JMenu("Jeu");
+        JMenu m = new JMenu("Menu");
         
-        JMenuItem mi = new JMenuItem("Partie");
+        JMenuItem mi = new JMenuItem("Fermer");
         
         //ItemListener i = new Item
         
