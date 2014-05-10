@@ -53,16 +53,103 @@ public class Piece {
         return this.matrice[x][y];
     }
     
-    public Piece() {
-        this.x = 0;
+    public Piece(int numero) {
+        this.x = 0; //Position à 0
         this.y = 0;
-        this.longueur = 4;
-        this.largeur = 1;
-        this.matrice = new Bloc[this.largeur][this.longueur];
-        for (int i = 0; i < this.largeur; i++) {
-            for (int j = 0; j < this.longueur; j++) {
-                this.matrice[i][j].setCouleur(1);
-            }
+        switch (numero) {
+            case 1:
+                this.longueur = 1;                                              //****
+                this.largeur = 4;
+                this.matrice = new Bloc[this.largeur][this.longueur];
+                for (int i = 0; i < this.largeur; i++) {
+                        this.matrice[i][0].setCouleur(1);
+                }
+                break;
+            case 2:
+                this.longueur = 2;                                              //**
+                this.largeur = 2;                                               //**
+                this.matrice = new Bloc[this.largeur][this.longueur];
+                for (int i = 0; i < this.largeur; i++) {
+                    for (int j = 0; j < this.longueur; j++) {
+                        this.matrice[i][j].setCouleur(1);
+                    }
+                }
+                break;
+            case 3:
+                this.longueur = 2;                                              //*
+                this.largeur = 3;                                               //***
+                this.matrice = new Bloc[this.largeur][this.longueur];
+                for (int i = 0; i < this.largeur; i++) {
+                    for (int j = 0; j < this.longueur; j++) {
+                        this.matrice[i][j].setCouleur(0); //On initialise les blocs à 0 avant de les remplir
+                    }
+                }
+                this.matrice[0][0].setCouleur(1);
+                for (int i = 0; i < this.largeur; i++) {
+                    this.matrice[i][1].setCouleur(1);
+                }
+                break;
+            case 4:
+                this.longueur = 2;                                              //***
+                this.largeur = 3;                                               //*
+                this.matrice = new Bloc[this.largeur][this.longueur];
+                for (int i = 0; i < this.largeur; i++) {
+                    for (int j = 0; j < this.longueur; j++) {
+                        this.matrice[i][j].setCouleur(0);
+                    }
+                }
+                this.matrice[0][1].setCouleur(1);
+                for (int i = 0; i < this.largeur; i++) {
+                    this.matrice[i][0].setCouleur(1);
+                }
+                break;
+            case 5:
+                this.longueur = 2;                                              //**
+                this.largeur = 3;                                               // **
+                this.matrice = new Bloc[this.largeur][this.longueur];
+                for (int i = 0; i < this.largeur; i++) {
+                    for (int j = 0; j < this.longueur; j++) {
+                        this.matrice[i][j].setCouleur(0);
+                    }
+                }
+                this.matrice[0][0].setCouleur(1);
+                this.matrice[1][0].setCouleur(1);
+                this.matrice[1][1].setCouleur(1);
+                this.matrice[2][1].setCouleur(1);
+                break;
+            case 6:
+                this.longueur = 2;                                              // **
+                this.largeur = 3;                                               //**
+                this.matrice = new Bloc[this.largeur][this.longueur];
+                for (int i = 0; i < this.largeur; i++) {
+                    for (int j = 0; j < this.longueur; j++) {
+                        this.matrice[i][j].setCouleur(0);
+                    }
+                }
+                this.matrice[0][1].setCouleur(1);
+                this.matrice[1][1].setCouleur(1);
+                this.matrice[1][0].setCouleur(1);
+                this.matrice[2][0].setCouleur(1);
+                break;
+            case 7:
+                this.longueur = 2;                                              // *
+                this.largeur = 3;                                               //***
+                this.matrice = new Bloc[this.largeur][this.longueur];
+                for (int i = 0; i < this.largeur; i++) {
+                    for (int j = 0; j < this.longueur; j++) {
+                        this.matrice[i][j].setCouleur(0);
+                    }
+                }
+                this.matrice[1][0].setCouleur(1);
+                for (int i = 0; i < this.largeur; i++) {
+                    this.matrice[i][1].setCouleur(1);
+                }
+                break;
+            default: // Cas par défaut : envoit un bloc simple (permet de voir s'il y a une erreur)
+                this.longueur = 1;
+                this.largeur = 1;
+                this.matrice = new Bloc[this.largeur][this.longueur];
+                break;
         }
     }
 
