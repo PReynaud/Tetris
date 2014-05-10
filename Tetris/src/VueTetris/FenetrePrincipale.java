@@ -5,10 +5,12 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public class FenetrePrincipale extends JFrame {
+public class FenetrePrincipale extends JFrame implements Observer{
 
     public FenetrePrincipale() {
         super();
@@ -39,6 +41,11 @@ public class FenetrePrincipale extends JFrame {
         BorderLayout bordure_grille = new BorderLayout();
         this.add(new GrilleGraphique(), BorderLayout.WEST);
         this.add(new Interface(), BorderLayout.EAST);
+    }
+
+    @Override
+    public void update(Observable o, Object o1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

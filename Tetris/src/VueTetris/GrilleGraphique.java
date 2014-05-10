@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import tetris.*;
 
 public class GrilleGraphique extends JPanel{
     
@@ -16,9 +15,5 @@ public class GrilleGraphique extends JPanel{
             JPanel une_case = new Case();
             this.add(une_case);
         }
-    }
-    
-    public void piece_tombe(Piece une_piece){
-        
     }
 }
