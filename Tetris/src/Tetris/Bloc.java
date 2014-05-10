@@ -1,4 +1,4 @@
-package tetris;
+package Tetris;
 
 public class Bloc {
     private int x;

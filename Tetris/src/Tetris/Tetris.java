@@ -1,4 +1,4 @@
-package tetris;
+package Tetris;
 
 import javax.swing.*;
 import VueTetris.*;

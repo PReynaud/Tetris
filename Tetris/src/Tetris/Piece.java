@@ -1,5 +1,5 @@
 
-package tetris;
+package Tetris;
 
 public class Piece {
 
@@ -47,6 +47,10 @@ public class Piece {
 
     public void setLargeur(int largeur) {
         this.largeur = largeur;
+    }
+    
+    public Bloc getBloc(int x, int y){
+        return this.matrice[x][y];
     }
     
     public Piece() {
