@@ -57,19 +57,22 @@ public class Piece {
         this.x = 0; //Position à 0
         this.y = 0;
         this.indice_piece = 0;
+        liste_piece = new ArrayList<Bloc[][]>();
         Bloc[][] piece;
         switch (numero) {
             case 1:
                 piece = new Bloc[4][1];                                         //****
                 for (int i = 0; i < 4; i++) {
+                    piece[i][0] = new Bloc();
                     piece[i][0].setCouleur(1);
                 }
                 this.liste_piece.add(piece);
                 
                 piece = new Bloc[1][4];                                         //*
                 for (int i = 0; i < 4; i++) {                                   //*
+                    piece[0][i] = new Bloc();                                   //*
                     piece[0][i].setCouleur(1);                                  //*
-                }                                                               //*
+                }                            
                 this.liste_piece.add(piece);
                 break;
                 
@@ -78,6 +81,7 @@ public class Piece {
                 piece = new Bloc[2][2];                                         //**
                 for (int i = 0; i < 2; i++) {                                   //**
                     for (int j = 0; j < 2; j++) {
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(1);
                     }
                 }
@@ -89,6 +93,7 @@ public class Piece {
                 piece = new Bloc[3][2];                                         //*
                 for (int i = 0; i < 3; i++) {                                   //***
                     for (int j = 0; j < 2; j++) {
+                        piece[i][j] = new Bloc(); 
                         piece[i][j].setCouleur(0); //On initialise les blocs à 0 avant de les remplir
                     }
                 }
@@ -101,6 +106,7 @@ public class Piece {
                 piece = new Bloc[2][3];                                         //**
                 for (int i = 0; i < 2; i++) {                                   //*
                     for (int j = 0; j < 3; j++) {                               //*
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -113,6 +119,7 @@ public class Piece {
                 piece = new Bloc[3][2];                                         //***
                 for (int i = 0; i < 3; i++) {                                   //  *
                     for (int j = 0; j < 2; j++) {
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -125,6 +132,7 @@ public class Piece {
                 piece = new Bloc[2][3];                                         // *
                 for (int i = 0; i < 2; i++) {                                   // *
                     for (int j = 0; j < 3; j++) {                               //**
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -140,6 +148,7 @@ public class Piece {
                 piece = new Bloc[3][2];                                         //  *
                 for (int i = 0; i < 3; i++) {                                   //***
                     for (int j = 0; j < 2; j++) {
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -152,6 +161,7 @@ public class Piece {
                 piece = new Bloc[2][3];                                         //*
                 for (int i = 0; i < 2; i++) {                                   //*
                     for (int j = 0; j < 3; j++) {                               //**
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -164,6 +174,7 @@ public class Piece {
                 piece = new Bloc[3][2];                                         //***
                 for (int i = 0; i < 3; i++) {                                   //*
                     for (int j = 0; j < 2; j++) {
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -176,6 +187,7 @@ public class Piece {
                 piece = new Bloc[2][3];                                         //**
                 for (int i = 0; i < 2; i++) {                                   // *
                     for (int j = 0; j < 3; j++) {                               // *
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -191,6 +203,7 @@ public class Piece {
                 piece = new Bloc[3][2];                                         //**
                 for (int i = 0; i < 3; i++) {                                   // **
                     for (int j = 0; j < 2; j++) {
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -203,6 +216,7 @@ public class Piece {
                 piece = new Bloc[2][3];                                         // *
                 for (int i = 0; i < 3; i++) {                                   //**
                     for (int j = 0; j < 2; j++) {                               //*
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -218,6 +232,7 @@ public class Piece {
                 piece = new Bloc[3][2];                                         // **
                 for (int i = 0; i < 3; i++) {                                   //**
                     for (int j = 0; j < 2; j++) {
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -230,6 +245,7 @@ public class Piece {
                 piece = new Bloc[2][3];                                         //*
                 for (int i = 0; i < 3; i++) {                                   //**
                     for (int j = 0; j < 2; j++) {                               // *
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -245,6 +261,7 @@ public class Piece {
                 piece = new Bloc[3][2];                                         // *
                 for (int i = 0; i < 3; i++) {                                   //***
                     for (int j = 0; j < 2; j++) {
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -257,6 +274,7 @@ public class Piece {
                 piece = new Bloc[3][2];                                         //*
                 for (int i = 0; i < 3; i++) {                                   //**
                     for (int j = 0; j < 2; j++) {                               //*
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -269,6 +287,7 @@ public class Piece {
                 piece = new Bloc[3][2];                                         //***
                 for (int i = 0; i < 3; i++) {                                   // *
                     for (int j = 0; j < 2; j++) {
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -281,6 +300,7 @@ public class Piece {
                 piece = new Bloc[3][2];                                         // *
                 for (int i = 0; i < 3; i++) {                                   //**
                     for (int j = 0; j < 2; j++) {                               // *
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(0);
                     }
                 }
@@ -294,6 +314,8 @@ public class Piece {
                 
             default: // Cas par défaut : envoit un bloc simple (permet de voir s'il y a une erreur)
                 piece = new Bloc[1][1];
+                piece[0][0] = new Bloc();
+                piece[0][0].setCouleur(1);
                 this.liste_piece.add(piece);
                 break;
         }
