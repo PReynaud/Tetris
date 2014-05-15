@@ -72,6 +72,8 @@ public class Piece {
                 }                                                               //*
                 this.liste_piece.add(piece);
                 break;
+                
+                
             case 2:
                 piece = new Bloc[2][2];                                         //**
                 for (int i = 0; i < 2; i++) {                                   //**
@@ -81,6 +83,8 @@ public class Piece {
                 }
                 this.liste_piece.add(piece);
                 break;
+                
+                
             case 3:
                 piece = new Bloc[3][2];                                         //*
                 for (int i = 0; i < 3; i++) {                                   //***
@@ -286,6 +290,8 @@ public class Piece {
                 }
                 this.liste_piece.add(piece);
                 break;
+                
+                
             default: // Cas par défaut : envoit un bloc simple (permet de voir s'il y a une erreur)
                 piece = new Bloc[1][1];
                 this.liste_piece.add(piece);
