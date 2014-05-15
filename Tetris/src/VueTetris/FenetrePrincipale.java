@@ -1,5 +1,6 @@
 package VueTetris;
 
+import TetrisModele.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -11,7 +12,8 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 public class FenetrePrincipale extends JFrame implements Observer{
-
+    private GrilleGraphique grille;
+    
     public FenetrePrincipale() {
         super();
         
@@ -39,13 +41,17 @@ public class FenetrePrincipale extends JFrame implements Observer{
         setSize(600, 600);
         
         BorderLayout bordure_grille = new BorderLayout();
-        this.add(new GrilleGraphique(), BorderLayout.WEST);
+        this.grille = new GrilleGraphique();
+        this.add(this.grille, BorderLayout.WEST);
         this.add(new Interface(), BorderLayout.EAST);
     }
 
     @Override
     public void update(Observable o, Object o1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(o instanceof Modele){
+            Modele m = (Modele)o;
+            this.grille.update(m.getGrille());
+        }
     }
 
     

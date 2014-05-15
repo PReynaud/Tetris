@@ -1,5 +1,6 @@
 package VueTetris;
 
+import TetrisModele.Couleur;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -14,6 +15,10 @@ public class Case extends JPanel {
         setBackground(Color.white);
         Border blackline = BorderFactory.createLineBorder(Color.black,1);
         this.setBorder(blackline);    
+    }
+    
+    public void modifier_couleur(Couleur c){
+        setBackground(c.getCouleur());
     }
 
 

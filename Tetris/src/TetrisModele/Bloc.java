@@ -1,9 +1,10 @@
-package Tetris;
+package TetrisModele;
 
 public class Bloc {
     private int x;
     private int y;
     private int couleur;
+    private boolean bouge;
 
     public int getX() {
         return x;
@@ -32,9 +33,11 @@ public class Bloc {
     public Bloc(){
         
     }
-    public Bloc(int x, int y, int couleur){
+    
+    public Bloc(int x, int y, int couleur, boolean bouge){
         this.x = x;
         this.y = y;
         this.couleur = couleur;
+        this.bouge = bouge;
     }
 }

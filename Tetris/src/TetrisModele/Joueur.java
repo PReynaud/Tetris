@@ -1,4 +1,4 @@
-package Tetris;
+package TetrisModele;
 
 public class Joueur {
     
