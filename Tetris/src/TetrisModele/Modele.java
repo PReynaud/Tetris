@@ -21,7 +21,7 @@ public class Modele extends Observable{
 
         for (int i = 0; i < une_piece.getLargeur(); i++) {
             for (int j = 0; j < une_piece.getLongueur(); j++) {
-                if(une_piece.getBloc(i, j).getCouleur() != 0){
+                if(une_piece.getPiece()[i][j].getCouleur() != 0){
                     this.grille.grille_jeu[x + i][y + j].setCouleur(1);
                 }
             }

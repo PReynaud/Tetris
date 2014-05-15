@@ -18,8 +18,8 @@ public class Grille {
         int y = p.getY();
         for (int i = 0; i < p.getLargeur(); i++) {
             for (int j = 0; j < p.getLongueur(); j++) {
-                if ((p.getMatrice()[i][j].getCouleur() != 0)
-                    && ((j == p.getLongueur() - 1) || (p.getMatrice()[i][j].getCouleur() != 0))
+                if ((p.getPiece()[i][j].getCouleur() != 0)
+                    && ((j == p.getLongueur() - 1) || (p.getPiece()[i][j].getCouleur() != 0))
                     && (this.grille_jeu[x+i][y+i+1].getCouleur() != 0)) {
                     return true;
                 }
