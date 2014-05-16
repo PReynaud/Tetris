@@ -2,7 +2,17 @@ package TetrisModele;
 
 public class Grille {
 
-    Bloc[][] grille_jeu;
+    private Bloc[][] grille_jeu;
+    private int x;
+    private int y;
+    
+    public int getX(){
+        return this.x;
+    }
+    
+    public int getY(){
+        return this.y;
+    }
 
     public Grille(int longueur, int largeur) {
         this.grille_jeu = new Bloc[longueur][largeur];
@@ -11,6 +21,8 @@ public class Grille {
                 this.grille_jeu[i][j] = new Bloc(i, j, 0, false);
             }
         }
+        this.x = longueur;
+        this.y = largeur;
     }
 
     public boolean estEnBas(Piece p) {

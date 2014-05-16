@@ -32,6 +32,9 @@ public class GrilleGraphique extends JPanel{
                 if(g.getBloc(i, j).getCouleur() != 0){
                     this.tab[i][j].modifier_couleur(new Couleur(1));
                 }
+                if(g.getBloc(i, j).getCouleur() == 0){
+                    this.tab[i][j].modifier_couleur(new Couleur(0));
+                }
             }
         }
     }

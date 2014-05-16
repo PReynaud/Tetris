@@ -9,6 +9,11 @@ public class Couleur {
     public Color couleur;
     
     public Couleur(int i){
+         if(i == 0){
+            this.code = 0;
+            this.nom = "blanc";
+            this.couleur = Color.WHITE;
+        }
         if(i == 1){
             this.code = 1;
             this.nom = "noir";

@@ -16,5 +16,6 @@ public class Tetris {
         jeu.addObserver(fenetre);
         
         jeu.ajout_piece_grille(piece, 5, 5);  
+        jeu.run();
     } 
 }

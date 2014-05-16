@@ -4,7 +4,7 @@ public class Bloc {
     private int x;
     private int y;
     private int couleur;
-    private boolean bouge;
+    private boolean actif;
 
     public int getX() {
         return x;
@@ -30,6 +30,14 @@ public class Bloc {
         this.couleur = couleur;
     }
     
+    public boolean getActif(){
+        return this.actif;
+    }
+    
+    public void setActif(boolean b){
+        this.actif = b;
+    }
+    
     public Bloc(){
         
     }
@@ -38,6 +46,8 @@ public class Bloc {
         this.x = x;
         this.y = y;
         this.couleur = couleur;
-        this.bouge = bouge;
+        this.actif = bouge;
     }
+    
+    
 }
