@@ -58,7 +58,8 @@ public class Modele extends Observable implements Runnable{
         
         while(joue){
             if(this.piece_en_cours == null){
-                
+                this.piece_en_cours = Piece.election_piece();
+                this.ajout_piece_grille(this.piece_en_cours, 5, 5); 
             }
             while(this.piece_en_cours != null){
                 majObservateur();

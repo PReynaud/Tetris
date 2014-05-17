@@ -25,7 +25,7 @@ public class ChuteBloc extends TimerTask {
                 if (i + 1 == this.grille.getX()) {
                     collision = true;
                 }
-                if (!this.grille.getBloc(i + 1, j).getActif() && this.grille.getBloc(i + 1, j).avoirCouleur()) {
+                if (!collision && !this.grille.getBloc(i + 1, j).getActif() && this.grille.getBloc(i + 1, j).avoirCouleur()) {
                     collision = true;
                 }
             }

@@ -1,6 +1,7 @@
 package TetrisModele;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Piece {
 
@@ -319,5 +320,11 @@ public class Piece {
                 this.liste_piece.add(piece);
                 break;
         }
+    }
+    
+    public static Piece election_piece(){
+        Random rand = new Random();
+        int nombreAleatoire = rand.nextInt(1) + 1;
+        return new Piece(nombreAleatoire);
     }
 }
