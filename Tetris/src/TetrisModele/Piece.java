@@ -26,11 +26,11 @@ public class Piece {
     }
 
     public int getLongueur() {
-        return this.liste_piece.get(indice_piece)[1].length;
+        return this.liste_piece.get(indice_piece).length;
     }
 
     public int getLargeur() {
-        return this.liste_piece.get(indice_piece).length;
+        return this.liste_piece.get(indice_piece)[1].length;
     }
 
     public int getIndice_piece() {
@@ -318,14 +318,6 @@ public class Piece {
                 piece[0][0].setCouleur(1);
                 this.liste_piece.add(piece);
                 break;
-        }
-    }
-
-    public void tomber() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                this.y++;
-            }
         }
     }
 }

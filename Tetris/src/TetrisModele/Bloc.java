@@ -30,6 +30,15 @@ public class Bloc {
         this.couleur = couleur;
     }
     
+    public boolean avoirCouleur(){
+        if(this.couleur != 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     public boolean getActif(){
         return this.actif;
     }
@@ -38,8 +47,7 @@ public class Bloc {
         this.actif = b;
     }
     
-    public Bloc(){
-        
+    public Bloc(){     
     }
     
     public Bloc(int x, int y, int couleur, boolean bouge){
@@ -47,7 +55,5 @@ public class Bloc {
         this.y = y;
         this.couleur = couleur;
         this.actif = bouge;
-    }
-    
-    
+    }   
 }

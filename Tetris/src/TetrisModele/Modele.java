@@ -3,7 +3,6 @@ package TetrisModele;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class Modele extends Observable implements Runnable{
     private Grille grille;
@@ -21,13 +20,21 @@ public class Modele extends Observable implements Runnable{
     public Grille getGrille(){
         return this.grille;
     }
+    
+    public Piece getPiece(){
+        return this.piece_en_cours;
+    }
+    
+    public void setPiece(Piece p){
+        this.piece_en_cours = p;
+    }
    
     public void ajout_piece_grille(Piece une_piece, int x, int y) {
         une_piece.setX(x);
         une_piece.setY(y);
 
-        for (int i = 0; i < une_piece.getLargeur(); i++) {
-            for (int j = 0; j < une_piece.getLongueur(); j++) {
+        for (int i = 0; i < une_piece.getLongueur(); i++) {
+            for (int j = 0; j < une_piece.getLargeur(); j++) {
                 if(une_piece.getPiece()[i][j].getCouleur() != 0){
                     this.grille.getBloc(x + i, y + j).setCouleur(1);
                     this.grille.getBloc(x + i, y + j).setActif(true);
@@ -42,13 +49,21 @@ public class Modele extends Observable implements Runnable{
     public void majObservateur(){
         setChanged();
         notifyObservers();
-        afficher_grille();
     }
     
     @Override
     public void run() {
         this.timer.scheduleAtFixedRate(new ChuteBloc(this), 1000, 1000);
-        majObservateur();
+        boolean joue = true;
+        
+        while(joue){
+            if(this.piece_en_cours == null){
+                
+            }
+            while(this.piece_en_cours != null){
+                majObservateur();
+            }
+        }
     }
     
     public void afficher_grille(){
