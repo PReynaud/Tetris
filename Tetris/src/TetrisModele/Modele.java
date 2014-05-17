@@ -42,11 +42,22 @@ public class Modele extends Observable implements Runnable{
     public void majObservateur(){
         setChanged();
         notifyObservers();
+        afficher_grille();
     }
     
     @Override
     public void run() {
-        this.timer.scheduleAtFixedRate(new ChuteBloc(this.grille), 1000, 1000);
+        this.timer.scheduleAtFixedRate(new ChuteBloc(this), 1000, 1000);
         majObservateur();
+    }
+    
+    public void afficher_grille(){
+        for (int i = 0; i < this.grille.getX(); i++) {
+            for (int j = 0; j < this.grille.getY(); j++) {
+                System.out.print(this.grille.getBloc(i, j).getCouleur());               
+            }
+            System.out.println("");
+        }
+        System.out.println("");
     }
 }
