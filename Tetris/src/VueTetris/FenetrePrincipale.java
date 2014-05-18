@@ -2,14 +2,11 @@ package VueTetris;
 
 import TetrisModele.*;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
-import javax.swing.border.Border;
 
 public class FenetrePrincipale extends JFrame implements Observer{
     private GrilleGraphique grille;
