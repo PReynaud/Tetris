@@ -1,6 +1,5 @@
 package TetrisModele;
 
-import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Timer;
 
@@ -11,7 +10,6 @@ public class Modele extends Observable implements Runnable{
     private Piece piece_en_cours;
     
     public Modele(){
-        ActionListener action = null;
         Grille g = new Grille(20, 10);
         this.grille = g;      
         timer = new Timer();
@@ -75,5 +73,13 @@ public class Modele extends Observable implements Runnable{
             System.out.println("");
         }
         System.out.println("");
+    }
+    
+    public void bouger_piece_gauche(){
+        MouvementBloc.mouvement_gauche(this.grille, this.piece_en_cours);
+    }
+    
+    public void bouger_piece_droit(){
+        MouvementBloc.mouvement_droit(this.grille, this.piece_en_cours);
     }
 }

@@ -40,10 +40,10 @@ public class ChuteBloc extends TimerTask {
                         this.grille.getBloc(i + 1, j).setCouleur(this.grille.getBloc(i, j).getCouleur());
                         this.grille.getBloc(i, j).setActif(false);
                         this.grille.getBloc(i, j).setCouleur(new Couleur(0));
-                        this.modele.getPiece().setX(i + 1);
                     }
                 }
             }
+            this.modele.getPiece().setX(x + 1);
         }
 
         /*Si il y a collision les blocs deviennent inactifs*/
