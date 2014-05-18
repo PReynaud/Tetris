@@ -82,4 +82,8 @@ public class Modele extends Observable implements Runnable{
     public void bouger_piece_droit(){
         MouvementBloc.mouvement_droit(this.grille, this.piece_en_cours);
     }
+    
+    public void rotation_gauche(){
+        MouvementBloc.rotation_gauche(this.grille, this.piece_en_cours);
+    }
 }

@@ -42,6 +42,10 @@ public class Piece {
     public int getLargeur() {
         return this.liste_piece.get(indice_piece)[0].length;
     }
+    
+    public Bloc getBloc(int i, int j){
+        return this.getPiece()[i][j];
+    }
 
     public int getIndice_piece() {
         return indice_piece;
@@ -64,6 +68,7 @@ public class Piece {
     }
 
     public Piece(int numero, Couleur c) {
+        this.couleur = c;
         this.x = 0; //Position à 0
         this.y = 0;
         this.indice_piece = 0;
@@ -334,7 +339,7 @@ public class Piece {
     public static Piece election_piece(){
         Random rand = new Random();
         int nombreAleatoire = rand.nextInt(1) + 1;
-        int nombreAleatoire2 = rand.nextInt(4);
+        int nombreAleatoire2 = rand.nextInt(3) + 1;
         return new Piece(nombreAleatoire, new Couleur(nombreAleatoire2));
     }
 }

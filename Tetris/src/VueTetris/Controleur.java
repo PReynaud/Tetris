@@ -19,6 +19,7 @@ public class Controleur {
                 modele.bouger_piece_droit();
                 break;
             case KeyEvent.VK_UP:
+                modele.rotation_gauche();
                 break;
             case KeyEvent.VK_DOWN:
                 break;
