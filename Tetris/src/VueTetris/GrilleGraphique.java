@@ -29,10 +29,10 @@ public class GrilleGraphique extends JPanel{
     public void update(Grille g){
         for(int i = 0; i < 20; i++){
             for(int j = 0; j < 10; j++){
-                if(g.getBloc(i, j).getCouleur() != 0){
-                    this.tab[i][j].modifier_couleur(new Couleur(1));
+                if(g.getBloc(i, j).getCouleur().getCode() != 0){
+                    this.tab[i][j].modifier_couleur(new Couleur(g.getBloc(i, j).getCouleur().getCode()));
                 }
-                if(g.getBloc(i, j).getCouleur() == 0){
+                if(g.getBloc(i, j).getCouleur().getCode() == 0){
                     this.tab[i][j].modifier_couleur(new Couleur(0));
                 }
             }

@@ -37,9 +37,9 @@ public class ChuteBloc extends TimerTask {
                 for (int j = y; j <= largeur; j++) {
                     if (this.grille.getBloc(i, j).getActif()) {
                         this.grille.getBloc(i + 1, j).setActif(true);
-                        this.grille.getBloc(i + 1, j).setCouleur(1);
+                        this.grille.getBloc(i + 1, j).setCouleur(this.grille.getBloc(i, j).getCouleur());
                         this.grille.getBloc(i, j).setActif(false);
-                        this.grille.getBloc(i, j).setCouleur(0);
+                        this.grille.getBloc(i, j).setCouleur(new Couleur(0));
                         this.modele.getPiece().setX(i + 1);
                     }
                 }

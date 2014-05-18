@@ -35,8 +35,8 @@ public class Modele extends Observable implements Runnable{
 
         for (int i = 0; i < une_piece.getLongueur(); i++) {
             for (int j = 0; j < une_piece.getLargeur(); j++) {
-                if(une_piece.getPiece()[i][j].getCouleur() != 0){
-                    this.grille.getBloc(x + i, y + j).setCouleur(1);
+                if(une_piece.getPiece()[i][j].getCouleur().getCode() != 0){
+                    this.grille.getBloc(x + i, y + j).setCouleur(une_piece.getPiece()[i][j].getCouleur());
                     this.grille.getBloc(x + i, y + j).setActif(true);
                 }
             }

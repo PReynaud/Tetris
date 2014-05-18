@@ -18,7 +18,7 @@ public class Grille {
         this.grille_jeu = new Bloc[longueur][largeur];
         for (int i = 0; i < longueur; i++) {
             for (int j = 0; j < largeur; j++) {
-                this.grille_jeu[i][j] = new Bloc(i, j, 0, false);
+                this.grille_jeu[i][j] = new Bloc(i, j, new Couleur(0), false);
             }
         }
         this.x = longueur;
@@ -30,9 +30,9 @@ public class Grille {
         int y = p.getY();
         for (int i = 0; i < p.getLargeur(); i++) {
             for (int j = 0; j < p.getLongueur(); j++) {
-                if ((p.getPiece()[i][j].getCouleur() != 0)
-                    && ((j == p.getLongueur() - 1) || (p.getPiece()[i][j].getCouleur() != 0))
-                    && (this.grille_jeu[x+i][y+i+1].getCouleur() != 0)) {
+                if ((p.getPiece()[i][j].getCouleur().getCode() != 0)
+                    && ((j == p.getLongueur() - 1) || (p.getPiece()[i][j].getCouleur().getCode() != 0))
+                    && (this.grille_jeu[x+i][y+i+1].getCouleur().getCode() != 0)) {
                     return true;
                 }
             }

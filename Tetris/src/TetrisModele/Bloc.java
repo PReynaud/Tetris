@@ -3,7 +3,7 @@ package TetrisModele;
 public class Bloc {
     private int x;
     private int y;
-    private int couleur;
+    private Couleur couleur;
     private boolean actif;
 
     public int getX() {
@@ -22,16 +22,16 @@ public class Bloc {
         this.y = y;
     }
 
-    public int getCouleur() {
+    public Couleur getCouleur() {
         return couleur;
     }
 
-    public void setCouleur(int couleur) {
+    public void setCouleur(Couleur couleur) {
         this.couleur = couleur;
     }
     
     public boolean avoirCouleur(){
-        if(this.couleur != 0){
+        if(this.couleur.getCode() != 0){
             return true;
         }
         else{
@@ -50,7 +50,7 @@ public class Bloc {
     public Bloc(){     
     }
     
-    public Bloc(int x, int y, int couleur, boolean bouge){
+    public Bloc(int x, int y, Couleur couleur, boolean bouge){
         this.x = x;
         this.y = y;
         this.couleur = couleur;

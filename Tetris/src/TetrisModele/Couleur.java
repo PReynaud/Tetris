@@ -4,9 +4,9 @@ import java.awt.Color;
 
 
 public class Couleur {
-    public int code;
-    public String nom;
-    public Color couleur;
+    private int code;
+    private String nom;
+    private Color couleur;
     
     public Couleur(int i){
          if(i == 0){
@@ -19,9 +19,24 @@ public class Couleur {
             this.nom = "noir";
             this.couleur = Color.BLACK;
         }
+        if(i == 2){
+            this.code = 2;
+            this.nom = "rouge";
+            this.couleur = Color.RED;
+        }
+        if(i == 3){
+            this.code = 3;
+            this.nom = "bleu";
+            this.couleur = Color.BLUE;
+        }
+        
     }
     
     public Color getCouleur(){
         return this.couleur;
+    }
+    
+    public int getCode(){
+        return this.code;
     }
 }
