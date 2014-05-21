@@ -54,14 +54,14 @@ public class MouvementPiece {
                 int longueur_retourne = piece_retournee.length;
                 int largeur_retourne = piece_retournee[0].length;
                 // On teste si la pièce dépasse la grille
-                if ((p.getX() + longueur_retourne >= g.getX())
+                if ((p.getX() + longueur_retourne - 1 >= g.getX())
                         || (p.getY() + largeur_retourne - 1 >= g.getY())) {
                     return true;
                 }
                 // Puis on teste si deux blocs se superposent dans le cas où la pièce subirait une rotation
                 for (int i = p.getX(); i < p.getX() + longueur_retourne; i++) {
                     for (int j = p.getY(); j < p.getY() + largeur_retourne; j++) {
-                        if (g.getBloc(i, j).avoirCouleur() && p.getBloc(i - p.getX(), j - p.getY()).avoirCouleur()) {
+                        if (g.getBloc(i, j).avoirCouleur() && piece_retournee[i - p.getX()] [j - p.getY()].avoirCouleur()) {
                             return true;
                         }
                     }
