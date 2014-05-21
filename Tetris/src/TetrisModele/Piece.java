@@ -5,11 +5,19 @@ import java.util.Random;
 
 public class Piece {
 
-    ArrayList<Bloc[][]> liste_piece;
+    private ArrayList<Bloc[][]> liste_piece;
     private int x;
     private int y;
     private int indice_piece;
     private Couleur couleur;
+
+    public ArrayList<Bloc[][]> getListe_piece() {
+        return liste_piece;
+    }
+
+    public void setListe_piece(ArrayList<Bloc[][]> liste_piece) {
+        this.liste_piece = liste_piece;
+    }
 
     public int getX() {
         return x;
@@ -26,12 +34,12 @@ public class Piece {
     public void setY(int y) {
         this.y = y;
     }
-    
-    public Couleur getCouleur(){
+
+    public Couleur getCouleur() {
         return this.couleur;
     }
-    
-    public void setCouleur(Couleur c){
+
+    public void setCouleur(Couleur c) {
         this.couleur = c;
     }
 
@@ -42,8 +50,8 @@ public class Piece {
     public int getLargeur() {
         return this.liste_piece.get(indice_piece)[0].length;
     }
-    
-    public Bloc getBloc(int i, int j){
+
+    public Bloc getBloc(int i, int j) {
         return this.getPiece()[i][j];
     }
 
@@ -57,6 +65,10 @@ public class Piece {
 
     public Bloc[][] getPiece() {
         return this.liste_piece.get(indice_piece);
+    }
+
+    public Bloc[][] getPiece_indice(int indice) {
+        return this.liste_piece.get(indice);
     }
 
     public void incrementer_indice() {
@@ -75,14 +87,14 @@ public class Piece {
         liste_piece = new ArrayList<Bloc[][]>();
         Bloc[][] piece;
         switch (numero) {
-            case 1:              
+            case 1:
                 piece = new Bloc[1][4];                                         //****
                 for (int i = 0; i < 4; i++) {
                     piece[0][i] = new Bloc();
                     piece[0][i].setCouleur(c);
-                }                            
+                }
                 this.liste_piece.add(piece);
-                
+
                 piece = new Bloc[4][1];                                         //*                                         //****
                 for (int i = 0; i < 4; i++) {                                   //*
                     piece[i][0] = new Bloc();                                   //*
@@ -90,8 +102,7 @@ public class Piece {
                 }
                 this.liste_piece.add(piece);
                 break;
-                
-                
+
             case 2:
                 piece = new Bloc[2][2];                                         //**
                 for (int i = 0; i < 2; i++) {                                   //**
@@ -102,13 +113,12 @@ public class Piece {
                 }
                 this.liste_piece.add(piece);
                 break;
-                
-                
+
             case 3:
                 piece = new Bloc[2][3];                                         //*
                 for (int i = 0; i < 2; i++) {                                   //***
                     for (int j = 0; j < 3; j++) {
-                        piece[i][j] = new Bloc(); 
+                        piece[i][j] = new Bloc();
                         piece[i][j].setCouleur(new Couleur(0)); //On initialise les blocs à 0 avant de les remplir
                     }
                 }
@@ -117,7 +127,7 @@ public class Piece {
                     piece[1][i].setCouleur(c);
                 }
                 this.liste_piece.add(piece);
-                
+
                 piece = new Bloc[3][2];                                         //**
                 for (int i = 0; i < 3; i++) {                                   //*
                     for (int j = 0; j < 2; j++) {                               //*
@@ -130,7 +140,7 @@ public class Piece {
                     piece[i][0].setCouleur(c);
                 }
                 this.liste_piece.add(piece);
-                
+
                 piece = new Bloc[2][3];                                         //***
                 for (int i = 0; i < 3; i++) {                                   //  *
                     for (int j = 0; j < 2; j++) {
@@ -143,7 +153,7 @@ public class Piece {
                     piece[0][i].setCouleur(c);
                 }
                 this.liste_piece.add(piece);
-                
+
                 piece = new Bloc[3][2];                                         // *
                 for (int i = 0; i < 2; i++) {                                   // *
                     for (int j = 0; j < 3; j++) {                               //**
@@ -157,8 +167,7 @@ public class Piece {
                 }
                 this.liste_piece.add(piece);
                 break;
-                
-                
+
             case 4:
                 piece = new Bloc[2][3];                                         //  *
                 for (int i = 0; i < 3; i++) {                                   //***
@@ -172,7 +181,7 @@ public class Piece {
                     piece[1][i].setCouleur(c);
                 }
                 this.liste_piece.add(piece);
-                
+
                 piece = new Bloc[3][2];                                         //*
                 for (int i = 0; i < 2; i++) {                                   //*
                     for (int j = 0; j < 3; j++) {                               //**
@@ -185,7 +194,7 @@ public class Piece {
                     piece[i][0].setCouleur(c);
                 }
                 this.liste_piece.add(piece);
-                
+
                 piece = new Bloc[2][3];                                         //***
                 for (int i = 0; i < 3; i++) {                                   //*
                     for (int j = 0; j < 2; j++) {
@@ -198,7 +207,7 @@ public class Piece {
                     piece[0][i].setCouleur(c);
                 }
                 this.liste_piece.add(piece);
-                
+
                 piece = new Bloc[3][2];                                         //**
                 for (int i = 0; i < 2; i++) {                                   // *
                     for (int j = 0; j < 3; j++) {                               // *
@@ -212,8 +221,7 @@ public class Piece {
                 }
                 this.liste_piece.add(piece);
                 break;
-                
-                
+
             case 5:
                 piece = new Bloc[2][3];                                         //**
                 for (int i = 0; i < 3; i++) {                                   // **
@@ -241,8 +249,7 @@ public class Piece {
                 piece[2][0].setCouleur(c);
                 this.liste_piece.add(piece);
                 break;
-                
-                
+
             case 6:
                 piece = new Bloc[2][3];                                         // **
                 for (int i = 0; i < 3; i++) {                                   //**
@@ -270,8 +277,7 @@ public class Piece {
                 piece[2][1].setCouleur(c);
                 this.liste_piece.add(piece);
                 break;
-                
-                
+
             case 7:
                 piece = new Bloc[2][3];                                         // *
                 for (int i = 0; i < 3; i++) {                                   //***
@@ -325,8 +331,7 @@ public class Piece {
                 }
                 this.liste_piece.add(piece);
                 break;
-                
-                
+
             default: // Cas par défaut : envoit un bloc simple (permet de voir s'il y a une erreur)
                 piece = new Bloc[1][1];
                 piece[0][0] = new Bloc();
@@ -335,8 +340,8 @@ public class Piece {
                 break;
         }
     }
-    
-    public static Piece election_piece(){
+
+    public static Piece election_piece() {
         Random rand = new Random();
         int nombreAleatoire = rand.nextInt(1) + 1;
         int nombreAleatoire2 = rand.nextInt(3) + 1;

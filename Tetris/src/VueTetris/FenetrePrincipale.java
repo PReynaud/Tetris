@@ -47,7 +47,7 @@ public class FenetrePrincipale extends JFrame implements Observer{
     public void update(Observable o, Object o1) {
         if(o instanceof Modele){
             Modele m = (Modele)o;
-            this.grille.update(m.getGrille());
+            this.grille.update(m.getGrille(), m.getPiece());
         }
     }
 

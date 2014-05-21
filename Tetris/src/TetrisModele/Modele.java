@@ -30,15 +30,6 @@ public class Modele extends Observable implements Runnable{
     public void ajout_piece_grille(Piece une_piece, int x, int y) {
         une_piece.setX(x);
         une_piece.setY(y);
-
-        for (int i = 0; i < une_piece.getLongueur(); i++) {
-            for (int j = 0; j < une_piece.getLargeur(); j++) {
-                if(une_piece.getPiece()[i][j].getCouleur().getCode() != 0){
-                    this.grille.getBloc(x + i, y + j).setCouleur(une_piece.getPiece()[i][j].getCouleur());
-                    this.grille.getBloc(x + i, y + j).setActif(true);
-                }
-            }
-        }
         
         piece_en_cours = une_piece;
         majObservateur();
@@ -51,7 +42,7 @@ public class Modele extends Observable implements Runnable{
     
     @Override
     public void run() {
-        this.timer.scheduleAtFixedRate(new ChuteBloc(this), 1000, 1000);
+        this.timer.scheduleAtFixedRate(new ChutePiece(this), 1000, 1000);
         boolean joue = true;
         
         while(joue){
@@ -76,14 +67,14 @@ public class Modele extends Observable implements Runnable{
     }
     
     public void bouger_piece_gauche(){
-        MouvementBloc.mouvement_gauche(this.grille, this.piece_en_cours);
+        MouvementPiece.mouvement_gauche(this.grille, this.piece_en_cours);
     }
     
     public void bouger_piece_droit(){
-        MouvementBloc.mouvement_droit(this.grille, this.piece_en_cours);
+        MouvementPiece.mouvement_droit(this.grille, this.piece_en_cours);
     }
     
     public void rotation_gauche(){
-        MouvementBloc.rotation_gauche(this.grille, this.piece_en_cours);
+        MouvementPiece.rotation_gauche(this.grille, this.piece_en_cours);
     }
 }
