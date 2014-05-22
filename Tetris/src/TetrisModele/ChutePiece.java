@@ -17,12 +17,11 @@ public class ChutePiece extends TimerTask {
     public void tomber_piece() {
         int x = this.modele.getPiece().getX();
         int y = this.modele.getPiece().getY();
-        int longueur = this.modele.getPiece().getX() + this.modele.getPiece().getLongueur();
-        int largeur = this.modele.getPiece().getY() + this.modele.getPiece().getLargeur();
-        boolean collision = false;
-
+        boolean collision;
+        System.out.println(x);
+        System.out.println(y);
         /*On va d'abord vérifier si il n'y aura pas de collisions*/
-        collision = test_collision(grille, this.modele.getPiece(), 0);
+        collision = test_collision(grille, this.modele.getPiece().getPiece(), x + 1, y);
 
         /*Puis si l'on peut, on va descendre la pièce*/
         if (!collision) {
@@ -47,5 +46,9 @@ public class ChutePiece extends TimerTask {
     @Override
     public void run() {
         tomber_piece();
+    }
+
+    private boolean test_collision2(Grille grille, Piece piece, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

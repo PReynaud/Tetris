@@ -67,8 +67,8 @@ public class Piece {
         return this.liste_piece.get(indice_piece);
     }
 
-    public Bloc[][] getPiece_indice(int indice) {
-        return this.liste_piece.get(indice);
+    public Bloc[][] getPiece_indice_suivant() {
+        return this.liste_piece.get((this.indice_piece + 1) % this.liste_piece.size());
     }
 
     public void incrementer_indice() {
