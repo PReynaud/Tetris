@@ -15,29 +15,28 @@ public class ChutePiece extends TimerTask {
     }
 
     public void tomber_piece() {
-        int x = this.modele.getPiece().getX();
-        int y = this.modele.getPiece().getY();
+        int x = this.modele.getPiece_en_cours().getX();
+        int y = this.modele.getPiece_en_cours().getY();
         boolean collision;
-        System.out.println(x);
-        System.out.println(y);
-        /*On va d'abord vérifier si il n'y aura pas de collisions*/
-        collision = test_collision(grille, this.modele.getPiece().getPiece(), x + 1, y);
+        
+        /*On va d'abord vérifier si il n'y aura pas de collision*/
+        collision = test_collision(grille, this.modele.getPiece_en_cours().getPiece(), x + 1, y);
 
         /*Puis si l'on peut, on va descendre la pièce*/
         if (!collision) {
-            this.modele.getPiece().setX(x + 1);
+            this.modele.getPiece_en_cours().setX(x + 1);
         }
 
         /*Si il y a collision, on copie les blocs de la pièce dans la grille*/
         if (collision) {
-            for (int i = 0; i < this.modele.getPiece().getLongueur(); i++) {
-                for (int j = 0; j < this.modele.getPiece().getLargeur(); j++) {
-                    if (this.modele.getPiece().getBloc(i, j).avoirCouleur()) {
-                        this.grille.getBloc(x + i, y + j).setCouleur(new Couleur(this.modele.getPiece().getBloc(i, j).getCouleur().getCode()));
+            for (int i = 0; i < this.modele.getPiece_en_cours().getLongueur(); i++) {
+                for (int j = 0; j < this.modele.getPiece_en_cours().getLargeur(); j++) {
+                    if (this.modele.getPiece_en_cours().getBloc(i, j).avoirCouleur()) {
+                        this.grille.getBloc(x + i, y + j).setCouleur(new Couleur(this.modele.getPiece_en_cours().getBloc(i, j).getCouleur().getCode()));
                     }
                 }
             }
-            this.modele.setPiece(null);
+            this.modele.setPiece_en_cours(null);
         }
 
         modele.majObservateur();
@@ -46,9 +45,5 @@ public class ChutePiece extends TimerTask {
     @Override
     public void run() {
         tomber_piece();
-    }
-
-    private boolean test_collision2(Grille grille, Piece piece, int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -8,6 +8,7 @@ public class Modele extends Observable implements Runnable{
     private Joueur joueur;
     private Timer timer;
     private Piece piece_en_cours;
+    private Piece piece_suivante;
     
     public Modele(){
         Grille g = new Grille(20, 10);
@@ -19,12 +20,20 @@ public class Modele extends Observable implements Runnable{
         return this.grille;
     }
     
-    public Piece getPiece(){
+    public Piece getPiece_en_cours(){
         return this.piece_en_cours;
     }
     
-    public void setPiece(Piece p){
+    public void setPiece_en_cours(Piece p){
         this.piece_en_cours = p;
+    }
+
+    public Piece getPiece_suivante() {
+        return piece_suivante;
+    }
+
+    public void setPiece_suivante(Piece piece_suivante) {
+        this.piece_suivante = piece_suivante;
     }
    
     public void ajout_piece_grille(Piece une_piece, int x, int y) {
@@ -46,11 +55,15 @@ public class Modele extends Observable implements Runnable{
         boolean joue = true;
         
         while(joue){
-            if(this.piece_en_cours == null){
-                this.piece_en_cours = Piece.election_piece();
-                this.ajout_piece_grille(this.piece_en_cours, 5, 5); 
+            if(this.piece_suivante == null){
+                this.piece_suivante = Piece.election_piece();
             }
-            while(this.piece_en_cours != null){
+            if(this.piece_en_cours == null){
+                this.piece_en_cours = this.piece_suivante;
+                this.ajout_piece_grille(this.piece_en_cours, 5, 5); 
+                this.piece_suivante = null;
+            }
+            while(this.piece_en_cours != null && this.piece_suivante != null){
                 majObservateur();
             }
         }
