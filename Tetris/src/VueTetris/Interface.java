@@ -9,14 +9,16 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-public class Interface extends JPanel{
-    
+public class Interface extends JPanel {
+
     private Case[][] tab;
     private int taille;
-    
+
     public Interface() {
         this.taille = 4;
-        this.setLayout(new GridLayout(taille, taille));
+        GridLayout grille = new GridLayout(taille, taille);
+        grille.setColumns(taille);
+        this.setLayout(grille);
         this.setPreferredSize(new Dimension(100, 400));
 
         tab = new Case[taille][taille];
@@ -29,17 +31,19 @@ public class Interface extends JPanel{
             }
         }
     }
+
     public void update(Piece p) {
-        for(int i=0; i<taille; i++){
-            for(int j=0; j<taille; j++){
-                if(i<p.getLongueur()&& j<p.getLargeur()){
-                    this.tab[i][j].modifier_couleur(new Couleur(p.getBloc(i, j).getCouleur().getCode()));
-                }
-                else{
-                    this.tab[i][j].modifier_couleur(new Couleur(0));
+        if (p != null) {
+            for (int i = 0; i < taille; i++) {
+                for (int j = 0; j < taille; j++) {
+                    if (i < p.getLongueur() && j < p.getLargeur()) {
+                        this.tab[i][j].modifier_couleur(new Couleur(p.getBloc(i, j).getCouleur().getCode()));
+                    } else {
+                        this.tab[i][j].modifier_couleur(new Couleur(0));
+                    }
                 }
             }
         }
     }
-    
+
 }
