@@ -61,6 +61,7 @@ public class Modele extends Observable implements Runnable{
     @Override
     public void run() {
         this.timer.scheduleAtFixedRate(new ChutePiece(this), 1000, 1000);
+        
         this.joue = true;
         
         while (this.joue) {
@@ -104,17 +105,20 @@ public class Modele extends Observable implements Runnable{
         MouvementPiece.chute_piece(this.grille, this.piece_en_cours);
     }
     
-    public synchronized void pause(){
-        if(this.joue){
-            this.joue = false;
-            try {
-                this.timer.wait();
-            } catch (InterruptedException ex) {
-                System.out.println("Erreur pause");
+    
+    public void pause(){
+        synchronized(this.timer){
+            if(!this.joue){
+                this.timer.notify();            
             }
-        }
-        else{
-            this.timer.notify();
+            else{
+                this.joue = false;
+                try {
+                    this.timer.wait();
+                } catch (InterruptedException ex) {
+                    System.out.println("Erreur pause");
+                }
+            }
         }
     }
 }
