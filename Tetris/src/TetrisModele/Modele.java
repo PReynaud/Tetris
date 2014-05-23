@@ -7,40 +7,31 @@ public class Modele extends Observable implements Runnable{
     private Grille grille;
     private Joueur joueur;
     private Timer timer;
-    private Piece piece_en_cours;
-    private Piece piece_suivante;
     
     public Modele(){
         Grille g = new Grille(20, 10);
         this.grille = g;      
         timer = new Timer();
+        joueur = new Joueur();
     }
     
     public Grille getGrille(){
         return this.grille;
     }
-    
-    public Piece getPiece_en_cours(){
-        return this.piece_en_cours;
-    }
-    
-    public void setPiece_en_cours(Piece p){
-        this.piece_en_cours = p;
+
+    public Joueur getJoueur() {
+        return joueur;
     }
 
-    public Piece getPiece_suivante() {
-        return piece_suivante;
-    }
-
-    public void setPiece_suivante(Piece piece_suivante) {
-        this.piece_suivante = piece_suivante;
+    public void setJoueur(Joueur joueur) {
+        this.joueur = joueur;
     }
    
     public void ajout_piece_grille(Piece une_piece, int x, int y) {
         une_piece.setX(x);
         une_piece.setY(y);
         
-        piece_en_cours = une_piece;
+        joueur.setPiece_en_cours(une_piece);
         majObservateur();
     }
     
@@ -55,15 +46,15 @@ public class Modele extends Observable implements Runnable{
         boolean joue = true;
         
         while(joue){
-            if(this.piece_suivante == null){
-                this.piece_suivante = Piece.election_piece();
+            if(joueur.getPiece_suivante() == null){
+                joueur.setPiece_suivante(Piece.election_piece());
             }
-            if(this.piece_en_cours == null){
-                this.piece_en_cours = this.piece_suivante;
-                this.ajout_piece_grille(this.piece_en_cours, 5, 5); 
-                this.piece_suivante = null;
+            if(joueur.getPiece_en_cours() == null){
+                joueur.setPiece_en_cours(joueur.getPiece_suivante());
+                this.ajout_piece_grille(joueur.getPiece_en_cours(), 5, 5); 
+                joueur.setPiece_suivante(null);
             }
-            while(this.piece_en_cours != null && this.piece_suivante != null){
+            while(joueur.getPiece_en_cours() != null && joueur.getPiece_suivante() != null){
                 majObservateur();
             }
         }
@@ -80,18 +71,18 @@ public class Modele extends Observable implements Runnable{
     }
     
     public void bouger_piece_gauche(){
-        MouvementPiece.mouvement_gauche(this.grille, this.piece_en_cours);
+        MouvementPiece.mouvement_gauche(this.grille, this.joueur.getPiece_en_cours());
     }
     
     public void bouger_piece_droit(){
-        MouvementPiece.mouvement_droit(this.grille, this.piece_en_cours);
+        MouvementPiece.mouvement_droit(this.grille, this.joueur.getPiece_en_cours());
     }
     
     public void rotation_gauche(){
-        MouvementPiece.rotation_gauche(this.grille, this.piece_en_cours);
+        MouvementPiece.rotation_gauche(this.grille, this.joueur.getPiece_en_cours());
     }
     
     public void chute_rapide(){
-        MouvementPiece.chute_piece(this.grille, this.piece_en_cours);
+        MouvementPiece.chute_piece(this.grille, this.joueur.getPiece_en_cours());
     }
 }
