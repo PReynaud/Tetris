@@ -19,7 +19,7 @@ public class Interface extends JPanel {
         GridLayout grille = new GridLayout(taille, taille);
         grille.setColumns(taille);
         this.setLayout(grille);
-        this.setPreferredSize(new Dimension(100, 400));
+        this.setPreferredSize(new Dimension(80, 80));
 
         tab = new Case[taille][taille];
 

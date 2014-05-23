@@ -13,7 +13,7 @@ public class GrilleGraphique extends JPanel {
 
     public GrilleGraphique() {
         this.setLayout(new GridLayout(20, 10));
-        this.setPreferredSize(new Dimension(300, 400));
+        this.setPreferredSize(new Dimension(250, 500));
 
         tab = new Case[20][10];
 
