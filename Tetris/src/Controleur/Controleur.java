@@ -39,6 +39,7 @@ public class Controleur implements KeyListener{
                 modele.chute_rapide();
                 break;
             case KeyEvent.VK_P:
+                modele.pause();
                 break;    
         }
     }

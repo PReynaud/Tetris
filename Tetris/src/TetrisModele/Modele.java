@@ -2,6 +2,8 @@ package TetrisModele;
 
 import java.util.Observable;
 import java.util.Timer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Modele extends Observable implements Runnable{
     private Grille grille;
@@ -9,6 +11,8 @@ public class Modele extends Observable implements Runnable{
     private Timer timer;
     private Piece piece_en_cours;
     private Piece piece_suivante;
+    private boolean joue;
+    private boolean fin_partie;
     
     public Modele(){
         Grille g = new Grille(20, 10);
@@ -36,12 +40,17 @@ public class Modele extends Observable implements Runnable{
         this.piece_suivante = piece_suivante;
     }
    
-    public void ajout_piece_grille(Piece une_piece, int x, int y) {
+    public boolean ajout_piece_grille(Piece une_piece, int x, int y) {
         une_piece.setX(x);
         une_piece.setY(y);
         
         piece_en_cours = une_piece;
+        
+        if(MouvementPiece.fin_partie(this.grille, une_piece))
+            return false;
+        
         majObservateur();
+        return true;
     }
     
     public void majObservateur(){
@@ -52,18 +61,18 @@ public class Modele extends Observable implements Runnable{
     @Override
     public void run() {
         this.timer.scheduleAtFixedRate(new ChutePiece(this), 1000, 1000);
-        boolean joue = true;
+        this.joue = true;
         
-        while(joue){
-            if(this.piece_suivante == null){
+        while (this.joue) {
+            if (this.piece_suivante == null) {
                 this.piece_suivante = Piece.election_piece();
             }
-            if(this.piece_en_cours == null){
+            if (this.piece_en_cours == null) {
                 this.piece_en_cours = this.piece_suivante;
-                this.ajout_piece_grille(this.piece_en_cours, 5, 5); 
+                this.fin_partie = this.ajout_piece_grille(this.piece_en_cours, 0, 4);
                 this.piece_suivante = null;
             }
-            while(this.piece_en_cours != null && this.piece_suivante != null){
+            while (this.piece_en_cours != null && this.piece_suivante != null) {
                 majObservateur();
             }
         }
@@ -93,5 +102,19 @@ public class Modele extends Observable implements Runnable{
     
     public void chute_rapide(){
         MouvementPiece.chute_piece(this.grille, this.piece_en_cours);
+    }
+    
+    public synchronized void pause(){
+        if(this.joue){
+            this.joue = false;
+            try {
+                this.timer.wait();
+            } catch (InterruptedException ex) {
+                System.out.println("Erreur pause");
+            }
+        }
+        else{
+            this.timer.notify();
+        }
     }
 }

@@ -16,8 +16,8 @@ public class Couleur {
         }
         if(i == 1){
             this.code = 1;
-            this.nom = "noir";
-            this.couleur = Color.BLACK;
+            this.nom = "vert";
+            this.couleur = Color.GREEN;
         }
         if(i == 2){
             this.code = 2;
@@ -29,7 +29,26 @@ public class Couleur {
             this.nom = "bleu";
             this.couleur = Color.BLUE;
         }
-        
+        if(i == 4){
+            this.code = 4;
+            this.nom = "jaune";
+            this.couleur = Color.YELLOW;
+        }
+        if(i == 5){
+            this.code = 5;
+            this.nom = "cyan";
+            this.couleur = Color.CYAN;
+        }
+        if(i == 6){
+            this.code = 6;
+            this.nom = "orange";
+            this.couleur = Color.ORANGE;
+        }
+        if(i == 7){
+            this.code = 7;
+            this.nom = "magena";
+            this.couleur = Color.MAGENTA;
+        }
     }
     
     public Color getCouleur(){
