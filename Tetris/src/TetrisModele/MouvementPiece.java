@@ -71,4 +71,8 @@ public abstract class MouvementPiece {
         }
         
     }
+    
+    public static boolean fin_partie(Grille g, Piece p){
+       return test_collision(g, p.getPiece(), p.getX(), p.getY());
+    }
 }

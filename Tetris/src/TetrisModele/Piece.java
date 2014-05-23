@@ -344,7 +344,7 @@ public class Piece {
     public static Piece election_piece() {
         Random rand = new Random();
         int nombreAleatoire = rand.nextInt(7) + 1;
-        int nombreAleatoire2 = rand.nextInt(3) + 1;
+        int nombreAleatoire2 = rand.nextInt(7) + 1;
         return new Piece(nombreAleatoire, new Couleur(nombreAleatoire2));
     }
 }
