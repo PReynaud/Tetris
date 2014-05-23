@@ -47,7 +47,7 @@ public class Grille {
             }
             if(ligne_pleine){
                 ligne_sup = true;
-                for(int k = i + 1; k < longueur_grille; k++){
+                for(int k = 0; k < i; k++){
                     tab_lignes[k] += 1;
                 }
             }
@@ -55,10 +55,10 @@ public class Grille {
         
         /*On descend les lignes qui sont présentes au-dessus des lignes pleines*/
         if(ligne_sup){
-            for(int i = 1; i < longueur_grille - 1; i++){
+            for(int i = longueur_grille - 1; i > 0; i--){
                 if(tab_lignes[i] != 0){
                    for(int j = 0; j < largeur_grille; j++){
-                       getBloc(i + 1, j).setCouleur(getBloc(i, j).getCouleur());
+                       getBloc(i + tab_lignes[i], j).setCouleur(getBloc(i, j).getCouleur());
                     } 
                 }
             }
