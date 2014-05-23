@@ -1,6 +1,6 @@
 package TetrisModele;
 
-public class MouvementPiece {
+public abstract class MouvementPiece {
 
     public static boolean test_collision(Grille g, Bloc[][] tab_bloc, int x, int y) {
         int longueur = tab_bloc.length;

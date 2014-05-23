@@ -37,6 +37,9 @@ public class ChutePiece extends TimerTask {
                 }
             }
             this.modele.setPiece_en_cours(null);
+            
+            /*On vérifie si une ligne est supprimée*/
+            this.grille.suppression_ligne();
         }
 
         modele.majObservateur();

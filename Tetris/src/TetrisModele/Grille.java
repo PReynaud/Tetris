@@ -25,22 +25,44 @@ public class Grille {
         this.y = largeur;
     }
 
-    public boolean estEnBas(Piece p) {
-        int x = p.getX();
-        int y = p.getY();
-        for (int i = 0; i < p.getLargeur(); i++) {
-            for (int j = 0; j < p.getLongueur(); j++) {
-                if ((p.getPiece()[i][j].getCouleur().getCode() != 0)
-                    && ((j == p.getLongueur() - 1) || (p.getPiece()[i][j].getCouleur().getCode() != 0))
-                    && (this.grille_jeu[x+i][y+i+1].getCouleur().getCode() != 0)) {
-                    return true;
+    public Bloc getBloc(int x, int y){
+        return this.grille_jeu[x][y];
+    }
+    
+    public void suppression_ligne(){
+        int longueur_grille = getX();
+        int largeur_grille = getY();
+        boolean ligne_sup = false;
+        int[] tab_lignes = new int[longueur_grille];
+        for(int i = 0; i < longueur_grille; i++){
+            tab_lignes[i] = 0;
+        }
+        
+        /*On va parcourir une première fois la grille pour vérifier si il y a des lignes à vide*/
+        for(int i = 0; i < longueur_grille; i++){
+            boolean ligne_pleine = true;
+            for(int j = 0; j < largeur_grille; j++){
+                if(!getBloc(i, j).avoirCouleur())
+                    ligne_pleine = false;
+            }
+            if(ligne_pleine){
+                ligne_sup = true;
+                for(int k = i + 1; k < longueur_grille; k++){
+                    tab_lignes[k] += 1;
                 }
             }
         }
-        return false;
-    }
-    
-    public Bloc getBloc(int x, int y){
-        return this.grille_jeu[x][y];
+        
+        /*On descend les lignes qui sont présentes au-dessus des lignes pleines*/
+        if(ligne_sup){
+            for(int i = 1; i < longueur_grille - 1; i++){
+                if(tab_lignes[i] != 0){
+                   for(int j = 0; j < largeur_grille; j++){
+                       getBloc(i + 1, j).setCouleur(getBloc(i, j).getCouleur());
+                    } 
+                }
+            }
+        }
+        
     }
 }

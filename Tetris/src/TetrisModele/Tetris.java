@@ -6,7 +6,6 @@ import VueTetris.*;
 
 public class Tetris {
 
-
     public static void main(String[] args) {
         Modele jeu = new Modele();
         Controleur c = new Controleur(jeu);
