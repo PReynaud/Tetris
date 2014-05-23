@@ -57,4 +57,18 @@ public class MouvementPiece {
             p.incrementer_indice();
         }
     }
+    
+    public static void chute_piece(Grille g, Piece p){
+        boolean collision;
+        int x = p.getX();
+        
+        /*On va d'abord vérifier si il n'y aura pas de collisions*/
+        collision = test_collision(g, p.getPiece(), p.getX() + 1, p.getY());
+
+        /*Puis si l'on peut, on va décaler la pièce vers la gauche*/
+        if (!collision) {
+            p.setX(x + 1);
+        }
+        
+    }
 }

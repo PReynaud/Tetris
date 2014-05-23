@@ -22,6 +22,7 @@ public class Controleur {
                 modele.rotation_gauche();
                 break;
             case KeyEvent.VK_DOWN:
+                modele.chute_rapide();
                 break;
             case KeyEvent.VK_P:
                 break;    

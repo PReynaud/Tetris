@@ -90,4 +90,8 @@ public class Modele extends Observable implements Runnable{
     public void rotation_gauche(){
         MouvementPiece.rotation_gauche(this.grille, this.piece_en_cours);
     }
+    
+    public void chute_rapide(){
+        MouvementPiece.chute_piece(this.grille, this.piece_en_cours);
+    }
 }
