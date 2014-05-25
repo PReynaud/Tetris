@@ -17,7 +17,7 @@ public class FenetrePrincipale extends JFrame implements Observer {
 
     private GrilleGraphique grille;
     private PieceSuivante piece_suivante;
-    private PieceGardee piece_gardee;
+    private PieceConservee piece_conservee;
     private Informations informations;
 
     public FenetrePrincipale() {
@@ -48,7 +48,7 @@ public class FenetrePrincipale extends JFrame implements Observer {
         this.setLayout(new GridBagLayout());
         this.grille = new GrilleGraphique();
         this.piece_suivante = new PieceSuivante();
-        this.piece_gardee = new PieceGardee();
+        this.piece_conservee = new PieceConservee();
         this.informations = new Informations();
         c.gridheight = GridBagConstraints.REMAINDER;
         c.insets = new Insets(30, 0, 0, 20);
@@ -69,7 +69,7 @@ public class FenetrePrincipale extends JFrame implements Observer {
         c.insets = new Insets(30, 0, 0, 0);
         c.gridx = 2;
         c.gridy = 3;
-        this.add(this.piece_gardee, c);
+        this.add(this.piece_conservee, c);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class FenetrePrincipale extends JFrame implements Observer {
             Modele m = (Modele) o;
             this.grille.update(m.getGrille(), m.getJoueur().getPiece_en_cours());
             this.piece_suivante.update(m.getJoueur().getPiece_suivante());
-            this.piece_gardee.update(m.getJoueur().getPiece_conservee());
+            this.piece_conservee.update(m.getJoueur().getPiece_conservee());
             this.informations.update(m.getJoueur().getScore(), m.getJoueur().getBonus());
         }
     }
