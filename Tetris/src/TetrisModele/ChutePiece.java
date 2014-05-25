@@ -39,7 +39,7 @@ public class ChutePiece extends TimerTask {
             this.modele.getJoueur().setPiece_en_cours(null);
             
             /*On vérifie si une ligne est supprimée*/
-            this.grille.suppression_ligne();
+            modele.getJoueur().ajouterScore(this.grille.suppression_ligne());
         }
 
         modele.majObservateur();

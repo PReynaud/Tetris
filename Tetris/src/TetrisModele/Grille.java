@@ -29,7 +29,8 @@ public class Grille {
         return this.grille_jeu[x][y];
     }
     
-    public void suppression_ligne(){
+    public int suppression_ligne(){
+        int resultat = 0;
         int longueur_grille = getX();
         int largeur_grille = getY();
         boolean ligne_sup = false;
@@ -50,6 +51,13 @@ public class Grille {
                 for(int k = 0; k < i; k++){
                     tab_lignes[k] += 1;
                 }
+                if(resultat == 0)
+                {
+                    resultat = 100;
+                }
+                else{
+                    resultat = resultat * 3;
+                }
             }
         }
         
@@ -63,6 +71,6 @@ public class Grille {
                 }
             }
         }
-        
+        return resultat;
     }
 }

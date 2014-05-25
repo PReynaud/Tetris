@@ -38,6 +38,10 @@ public class Joueur {
     public void setScore(int score) {
         this.score = score;
     }
+    
+    public void ajouterScore(int score){
+        this.score += score;
+    }
 
     public int getBonus() {
         return bonus;
@@ -45,6 +49,9 @@ public class Joueur {
 
     public void setBonus(int bonus) {
         this.bonus = bonus;
+    }
+    public void supprimerBonus(){
+        this.bonus -= 1;
     }
 
     public Joueur() {

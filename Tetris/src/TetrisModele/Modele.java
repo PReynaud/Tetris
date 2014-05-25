@@ -114,7 +114,7 @@ public class Modele extends Observable implements Runnable {
             else{
                 this.joueur.setPiece_en_cours(this.joueur.getPiece_conservee());
                 this.joueur.setPiece_conservee(null);
-                this.joueur.setBonus(this.joueur.getBonus() - 1);
+                this.joueur.supprimerBonus();
             }
         }
     }
