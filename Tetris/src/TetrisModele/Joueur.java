@@ -3,7 +3,9 @@ package TetrisModele;
 public class Joueur {
     private Piece piece_en_cours;
     private Piece piece_suivante;
+    private Piece piece_conservee;
     private int score;
+    private int bonus;
     
     public Piece getPiece_en_cours(){
         return this.piece_en_cours;
@@ -21,6 +23,14 @@ public class Joueur {
         this.piece_suivante = piece_suivante;
     }
 
+    public Piece getPiece_conservee() {
+        return piece_conservee;
+    }
+
+    public void setPiece_conservee(Piece piece_conservee) {
+        this.piece_conservee = piece_conservee;
+    }
+
     public int getScore() {
         return score;
     }
@@ -29,8 +39,17 @@ public class Joueur {
         this.score = score;
     }
 
+    public int getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(int bonus) {
+        this.bonus = bonus;
+    }
+
     public Joueur() {
         this.score = 0;
+        this.bonus = 3;
     }
     
 }

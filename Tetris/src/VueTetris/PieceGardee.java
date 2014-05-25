@@ -33,17 +33,19 @@ public class PieceGardee extends JPanel {
     }
 
     public void update(Piece p) {
-        if (p != null) {
-            for (int i = 0; i < taille; i++) {
-                for (int j = 0; j < taille; j++) {
+
+        for (int i = 0; i < taille; i++) {
+            for (int j = 0; j < taille; j++) {
+                if (p != null) {
                     if (i < p.getLongueur() && j < p.getLargeur()) {
                         this.tab[i][j].modifier_couleur(new Couleur(p.getBloc(i, j).getCouleur().getCode()));
                     } else {
                         this.tab[i][j].modifier_couleur(new Couleur(0));
                     }
+                }else {
+                        this.tab[i][j].modifier_couleur(new Couleur(0));
                 }
             }
         }
     }
-
 }

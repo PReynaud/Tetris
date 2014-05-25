@@ -4,13 +4,14 @@ import TetrisModele.Modele;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Controleur implements KeyListener{
+public class Controleur implements KeyListener {
+
     Modele modele;
-    
-    public Controleur(Modele m){
+
+    public Controleur(Modele m) {
         this.modele = m;
     }
-    
+
     @Override
     public void keyTyped(KeyEvent ke) {
     }
@@ -23,7 +24,7 @@ public class Controleur implements KeyListener{
     @Override
     public void keyReleased(KeyEvent ke) {
     }
-    
+
     private void traiter_evenement(int keyChar) {
         switch (keyChar) {
             case KeyEvent.VK_LEFT:
@@ -40,7 +41,10 @@ public class Controleur implements KeyListener{
                 break;
             case KeyEvent.VK_P:
                 modele.pause();
-                break;    
+                break;
+            case KeyEvent.VK_SPACE:
+                modele.conserver_piece();
+                break;
         }
     }
 }
