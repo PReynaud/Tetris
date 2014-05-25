@@ -15,7 +15,8 @@ import javax.swing.*;
 public class FenetrePrincipale extends JFrame implements Observer {
 
     private GrilleGraphique grille;
-    private Interface interface_jeu;
+    private PieceSuivante piece_suivante;
+    private PieceGardee piece_gardee;
 
     public FenetrePrincipale() {
         super();
@@ -44,21 +45,27 @@ public class FenetrePrincipale extends JFrame implements Observer {
         setSize(600, 600);
         this.setLayout(new GridBagLayout());
         this.grille = new GrilleGraphique();
-        this.interface_jeu = new Interface();
+        this.piece_suivante = new PieceSuivante();
+        this.piece_gardee = new PieceGardee();
+        c.gridheight = 2;
         c.gridx = 0;
         c.gridy = 1;
+        c.weighty = 0.5;
         this.add(this.grille, c);
         c.gridx = 2;
         c.gridy = 1;
-        this.add(this.interface_jeu, c);
+        this.add(this.piece_suivante, c);
+        c.gridx = 2;
+        c.gridy = 2;
+        this.add(this.piece_gardee, c);
     }
 
     @Override
     public void update(Observable o, Object o1) {
         if (o instanceof Modele) {
             Modele m = (Modele) o;
-            this.grille.update(m.getGrille(), m.getPiece_en_cours());
-            this.interface_jeu.update(m.getPiece_suivante());
+            this.grille.update(m.getGrille(), m.getJoueur().getPiece_en_cours());
+            this.piece_suivante.update(m.getJoueur().getPiece_suivante());
         }
     }
 

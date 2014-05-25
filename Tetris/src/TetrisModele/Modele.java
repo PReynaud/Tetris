@@ -9,6 +9,7 @@ public class Modele extends Observable implements Runnable{
     private Grille grille;
     private Joueur joueur;
     private Timer timer;
+    private boolean joue;
     
     public Modele(){
         Grille g = new Grille(20, 10);
@@ -46,7 +47,7 @@ public class Modele extends Observable implements Runnable{
     @Override
     public void run() {
         this.timer.scheduleAtFixedRate(new ChutePiece(this), 1000, 1000);
-        
+        this.joue = true;
         while(joue){
             if(joueur.getPiece_suivante() == null){
                 joueur.setPiece_suivante(Piece.election_piece());

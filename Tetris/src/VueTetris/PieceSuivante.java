@@ -9,12 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-public class Interface extends JPanel {
+public class PieceSuivante extends JPanel {
 
     private Case[][] tab;
     private int taille;
 
-    public Interface() {
+    public PieceSuivante() {
         this.taille = 4;
         GridLayout grille = new GridLayout(taille, taille);
         grille.setColumns(taille);
