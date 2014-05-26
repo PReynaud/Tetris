@@ -12,7 +12,7 @@ public class Couleur {
          if(i == 0){
             this.code = 0;
             this.nom = "blanc";
-            this.couleur = Color.WHITE;
+            this.couleur = new Color(0,0,0,0);
         }
         if(i == 1){
             this.code = 1;

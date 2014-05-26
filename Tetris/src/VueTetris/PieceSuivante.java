@@ -2,12 +2,15 @@ package VueTetris;
 
 import TetrisModele.Couleur;
 import TetrisModele.Piece;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 public class PieceSuivante extends JPanel {
 
@@ -20,6 +23,10 @@ public class PieceSuivante extends JPanel {
         grille.setColumns(taille);
         this.setLayout(grille);
         this.setPreferredSize(new Dimension(80, 80));
+        this.setBackground(new Color(0, 0, 0, 0));
+        this.setOpaque(false);
+        
+        this.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.GRAY));
 
         tab = new Case[taille][taille];
 
@@ -44,6 +51,7 @@ public class PieceSuivante extends JPanel {
                 }
             }
         }
+        this.repaint();
     }
 
 }

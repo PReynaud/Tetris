@@ -4,6 +4,7 @@ import TetrisModele.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
@@ -13,8 +14,10 @@ public class GrilleGraphique extends JPanel {
 
     public GrilleGraphique() {
         this.setLayout(new GridLayout(20, 10));
-        this.setPreferredSize(new Dimension(250, 500));
-
+        this.setPreferredSize(new Dimension(260, 520));
+        this.setBackground(new Color(0, 0, 0, 0));
+        this.setOpaque(false);
+        this.setBorder(BorderFactory.createMatteBorder(10, 5, 10, 5, Color.GRAY));
         tab = new Case[20][10];
 
         for (int i = 0; i < 20; i++) {
@@ -45,5 +48,6 @@ public class GrilleGraphique extends JPanel {
                 }
             }
         }
+        this.repaint();
     }
 }

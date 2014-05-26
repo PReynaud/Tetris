@@ -1,6 +1,7 @@
 package TetrisModele;
 
 public class Joueur {
+
     private Piece piece_en_cours;
     private Piece piece_suivante;
     private Piece piece_conservee;
@@ -8,24 +9,28 @@ public class Joueur {
     private int bonus;
     private int niveau;
     private ListeNiveau liste_niveau;
-    
-    public Piece getPiece_en_cours(){
+
+    public Piece getPiece_en_cours() {
         return this.piece_en_cours;
     }
-    
-    public Niveau getNiveau(){
+
+    public Niveau getNiveau() {
         return this.liste_niveau.getIemeNiveau(this.niveau - 1);
-    }   
-    
-    public Niveau getNiveauSup(){
+    }
+
+    public int getNum_Niveau() {
+        return this.niveau;
+    }
+
+    public Niveau getNiveauSup() {
         return this.liste_niveau.getIemeNiveau(this.niveau);
     }
-    
-    public void setNiveau(int n){
+
+    public void setNiveau(int n) {
         this.niveau = n;
     }
-    
-    public void setPiece_en_cours(Piece p){
+
+    public void setPiece_en_cours(Piece p) {
         this.piece_en_cours = p;
     }
 
@@ -52,8 +57,8 @@ public class Joueur {
     public void setScore(int score) {
         this.score = score;
     }
-    
-    public void ajouterScore(int score){
+
+    public void ajouterScore(int score) {
         this.score += score;
     }
 
@@ -64,7 +69,8 @@ public class Joueur {
     public void setBonus(int bonus) {
         this.bonus = bonus;
     }
-    public void supprimerBonus(){
+
+    public void supprimerBonus() {
         this.bonus -= 1;
     }
 
@@ -74,5 +80,5 @@ public class Joueur {
         this.niveau = 1;
         this.liste_niveau = new ListeNiveau();
     }
-    
+
 }
