@@ -1,6 +1,7 @@
 package TetrisModele;
 
 import static TetrisModele.MouvementPiece.test_collision;
+import java.util.Timer;
 import java.util.TimerTask;
 
 public class ChutePiece extends TimerTask {
@@ -40,6 +41,17 @@ public class ChutePiece extends TimerTask {
             
             /*On vérifie si une ligne est supprimée*/
             modele.getJoueur().ajouterScore(this.grille.suppression_ligne());
+            
+            /*Puis on vérifie le score pour savoir si l'on change de niveau*/
+            if((this.modele.getJoueur().getNiveau().getNumeroNiveau() <= 10) &&
+                    (this.modele.getJoueur().getScore() >= this.modele.getJoueur().getNiveauSup().getScore_a_atteindre())){
+                this.modele.getJoueur().setNiveau(this.modele.getJoueur().getNiveau().getNumeroNiveau() + 1);
+                this.modele.getTimer().cancel();
+                this.modele.getTimer().purge();
+                this.modele.setTimer(new Timer());
+                this.modele.getTimer().scheduleAtFixedRate(new ChutePiece(this.modele), this.modele.getJoueur().getNiveau().getDelai(),
+                        this.modele.getJoueur().getNiveau().getDelai());
+            }
         }
 
         modele.majObservateur();

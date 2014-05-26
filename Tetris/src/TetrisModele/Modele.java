@@ -2,8 +2,6 @@ package TetrisModele;
 
 import java.util.Observable;
 import java.util.Timer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Modele extends Observable implements Runnable {
 
@@ -31,6 +29,14 @@ public class Modele extends Observable implements Runnable {
         this.joueur = joueur;
     }
 
+    public Timer getTimer() {
+        return timer;
+    }
+
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
+    
     public boolean ajout_piece_grille(Piece une_piece, int x, int y) {
         une_piece.setX(x);
         une_piece.setY(y);
@@ -55,7 +61,7 @@ public class Modele extends Observable implements Runnable {
             }
             if (joueur.getPiece_en_cours() == null) {
                 joueur.setPiece_en_cours(joueur.getPiece_suivante());
-                this.ajout_piece_grille(joueur.getPiece_en_cours(), 5, 5);
+                this.ajout_piece_grille(joueur.getPiece_en_cours(), 0, 5);
                 joueur.setPiece_suivante(null);
             }
             while (joueur.getPiece_en_cours() != null && joueur.getPiece_suivante() != null) {

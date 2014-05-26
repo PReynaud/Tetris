@@ -6,9 +6,23 @@ public class Joueur {
     private Piece piece_conservee;
     private int score;
     private int bonus;
+    private int niveau;
+    private ListeNiveau liste_niveau;
     
     public Piece getPiece_en_cours(){
         return this.piece_en_cours;
+    }
+    
+    public Niveau getNiveau(){
+        return this.liste_niveau.getIemeNiveau(this.niveau - 1);
+    }   
+    
+    public Niveau getNiveauSup(){
+        return this.liste_niveau.getIemeNiveau(this.niveau);
+    }
+    
+    public void setNiveau(int n){
+        this.niveau = n;
     }
     
     public void setPiece_en_cours(Piece p){
@@ -57,6 +71,8 @@ public class Joueur {
     public Joueur() {
         this.score = 0;
         this.bonus = 3;
+        this.niveau = 1;
+        this.liste_niveau = new ListeNiveau();
     }
     
 }
