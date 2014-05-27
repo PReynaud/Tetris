@@ -3,7 +3,9 @@ package VueTetris;
 import TetrisModele.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -26,10 +28,11 @@ public class FenetrePrincipale extends JFrame implements Observer {
     private Informations informations;
     private JLabel titre_piece_suivante;
     private JLabel titre_piece_conservee;
+    private JLabel pause;
+    private JLabel game_over;
 
     public FenetrePrincipale() {
         super();
-
         build();
 
         addWindowListener(new WindowAdapter() {
@@ -97,7 +100,21 @@ public class FenetrePrincipale extends JFrame implements Observer {
         c.gridx = 2;
         c.gridy = 5;
         this.add(this.piece_conservee, c);
+        
+        /*Pause*/
+        this.pause = new JLabel("Pause", SwingConstants.CENTER);
+        this.pause.setForeground(Color.RED);
+        Font font = new Font("Arial",Font.BOLD,50);
+        this.pause.setFont(font);
+        this.add(this.pause);
+        
+        /*GameOver*/
+        this.game_over = new JLabel("GameOver", SwingConstants.CENTER);
+        this.game_over.setForeground(Color.RED);
+        this.game_over.setFont(font);
+        this.add(this.game_over);
     }
+    
 
     @Override
     public void update(Observable o, Object o1) {
@@ -107,6 +124,14 @@ public class FenetrePrincipale extends JFrame implements Observer {
             this.piece_suivante.update(m.getJoueur().getPiece_suivante());
             this.piece_conservee.update(m.getJoueur().getPiece_conservee());
             this.informations.update(m.getJoueur().getNum_Niveau(), m.getJoueur().getBonus(), m.getJoueur().getScore());
+            if(!m.getJoue() && m.getPartie_finie())
+                this.pause.setVisible(true);
+            else
+                this.pause.setVisible(false);
+            if(!m.getPartie_finie())
+                this.game_over.setVisible(true);
+            else
+                this.game_over.setVisible(false);
         }
     }
 }

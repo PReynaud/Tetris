@@ -56,7 +56,7 @@ public class ChutePiece extends TimerTask {
 
         modele.majObservateur();
     }
-
+    
     @Override
     public void run() {
         tomber_piece();

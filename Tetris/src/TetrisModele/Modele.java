@@ -2,6 +2,8 @@ package TetrisModele;
 
 import java.util.Observable;
 import java.util.Timer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Modele extends Observable implements Runnable {
 
@@ -9,12 +11,15 @@ public class Modele extends Observable implements Runnable {
     private Joueur joueur;
     private Timer timer;
     private boolean joue;
+    private boolean partie_en_cours;
 
     public Modele() {
         Grille g = new Grille(20, 10);
         this.grille = g;
         timer = new Timer();
         joueur = new Joueur();
+        this.joue = true;
+        this.partie_en_cours = true;
     }
 
     public Grille getGrille() {
@@ -37,9 +42,21 @@ public class Modele extends Observable implements Runnable {
         this.timer = timer;
     }
     
+    public boolean getJoue(){
+        return this.joue;
+    }
+    
+    public boolean getPartie_finie(){
+        return this.partie_en_cours;
+    }
+    
     public boolean ajout_piece_grille(Piece une_piece, int x, int y) {
         une_piece.setX(x);
         une_piece.setY(y);
+        
+        if(MouvementPiece.test_collision(this.grille, une_piece.getPiece(), x, y)){
+            return false;
+        }
 
         joueur.setPiece_en_cours(une_piece);
         majObservateur();
@@ -54,19 +71,32 @@ public class Modele extends Observable implements Runnable {
     @Override
     public void run() {
         this.timer.scheduleAtFixedRate(new ChutePiece(this), 1000, 1000);
-        this.joue = true;
-        while (joue) {
-            if (joueur.getPiece_suivante() == null) {
-                joueur.setPiece_suivante(Piece.election_piece());
+        while(partie_en_cours){
+            while (joue) {
+                if (joueur.getPiece_suivante() == null) {
+                    joueur.setPiece_suivante(Piece.election_piece());
+                }
+                if (joueur.getPiece_en_cours() == null) {
+                    joueur.setPiece_en_cours(joueur.getPiece_suivante());
+                    if(!this.ajout_piece_grille(joueur.getPiece_en_cours(), 0, 5))
+                    {
+                        this.joue = false;
+                        this.partie_en_cours = false;
+                    }
+                    joueur.setPiece_suivante(null);
+                }
+                while (joueur.getPiece_en_cours() != null && joueur.getPiece_suivante() != null) {
+                    majObservateur();
+                }
             }
-            if (joueur.getPiece_en_cours() == null) {
-                joueur.setPiece_en_cours(joueur.getPiece_suivante());
-                this.ajout_piece_grille(joueur.getPiece_en_cours(), 0, 5);
-                joueur.setPiece_suivante(null);
+        }
+        try {
+            synchronized(this){
+                this.timer.cancel();
+                this.wait();
             }
-            while (joueur.getPiece_en_cours() != null && joueur.getPiece_suivante() != null) {
-                majObservateur();
-            }
+        } catch (InterruptedException ex) {
+            System.out.println("Erreur Game Over");
         }
     }
 
@@ -97,18 +127,15 @@ public class Modele extends Observable implements Runnable {
     }
 
     public void pause() {
-        synchronized (this.timer) {
-            if (!this.joue) {
-                this.timer.notify();
-            } else {
-                this.joue = false;
-                try {
-                    this.timer.wait();
-                } catch (InterruptedException ex) {
-                    System.out.println("Erreur pause");
-                }
-            }
-        }
+        this.joue = false;
+        this.timer.cancel();
+        this.timer.purge();
+    }
+    
+    public void play(){
+        this.joue = true;
+        this.timer = new Timer();
+        this.timer.scheduleAtFixedRate(new ChutePiece(this), this.joueur.getNiveau().getDelai(), this.joueur.getNiveau().getDelai());
     }
 
     public void conserver_piece() {
