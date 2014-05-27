@@ -24,6 +24,8 @@ public class FenetrePrincipale extends JFrame implements Observer {
     private PieceSuivante piece_suivante;
     private PieceConservee piece_conservee;
     private Informations informations;
+    private JLabel titre_piece_suivante;
+    private JLabel titre_piece_conservee;
 
     public FenetrePrincipale() {
         super();
@@ -60,6 +62,11 @@ public class FenetrePrincipale extends JFrame implements Observer {
         this.piece_suivante = new PieceSuivante();
         this.piece_conservee = new PieceConservee();
         this.informations = new Informations();
+        this.titre_piece_suivante = new JLabel("Pièce suivante :", SwingConstants.LEFT);
+        this.titre_piece_conservee = new JLabel("Pièce conservée :", SwingConstants.LEFT);
+        this.titre_piece_suivante.setForeground(Color.white);
+        this.titre_piece_conservee.setForeground(Color.white);
+        
         c.gridheight = GridBagConstraints.REMAINDER;
         c.insets = new Insets(50, 0, 0, 20);
         c.gridx = 0;
@@ -74,11 +81,21 @@ public class FenetrePrincipale extends JFrame implements Observer {
         c.insets = new Insets(30, 0, 0, 0);
         c.gridx = 2;
         c.gridy = 2;
-        this.add(this.piece_suivante, c);
+        this.add(this.titre_piece_suivante, c);
         c = new GridBagConstraints();
         c.insets = new Insets(0, 0, 0, 0);
         c.gridx = 2;
         c.gridy = 3;
+        this.add(this.piece_suivante, c);
+        c = new GridBagConstraints();
+        c.insets = new Insets(30, 0, 0, 0);
+        c.gridx = 2;
+        c.gridy = 4;
+        this.add(this.titre_piece_conservee, c);
+        c = new GridBagConstraints();
+        c.insets = new Insets(-120, 0, 0, 0);
+        c.gridx = 2;
+        c.gridy = 5;
         this.add(this.piece_conservee, c);
     }
 
