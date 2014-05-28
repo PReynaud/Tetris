@@ -113,7 +113,7 @@ public class FenetrePrincipale extends JFrame implements Observer {
         this.add(this.pause, c);
 
         /*GameOver*/
-        this.game_over = new JLabel("GameOver", SwingConstants.CENTER);
+        this.game_over = new JLabel("Game Over", SwingConstants.CENTER);
         this.game_over.setForeground(Color.RED);
         this.game_over.setFont(font);
         this.game_over.setVisible(false);
