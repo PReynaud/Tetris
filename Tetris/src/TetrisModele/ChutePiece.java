@@ -15,7 +15,7 @@ public class ChutePiece extends TimerTask {
         this.grille = modele.getGrille();
     }
 
-    public void tomber_piece() {
+    public synchronized void tomber_piece() {
         int x = this.modele.getJoueur().getPiece_en_cours().getX();
         int y = this.modele.getJoueur().getPiece_en_cours().getY();
         boolean collision;
