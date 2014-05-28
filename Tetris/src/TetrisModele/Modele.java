@@ -47,7 +47,7 @@ public class Modele extends Observable implements Runnable {
         return this.joue;
     }
 
-    public boolean getPartie_finie() {
+    public boolean getPartie_en_cours() {
         return this.partie_en_cours;
     }
 
@@ -80,8 +80,9 @@ public class Modele extends Observable implements Runnable {
                 if (joueur.getPiece_en_cours() == null) {
                     joueur.setPiece_en_cours(joueur.getPiece_suivante());
                     if (!this.ajout_piece_grille(joueur.getPiece_en_cours(), 0, 5)) {
-                        this.joue = false;
                         this.partie_en_cours = false;
+                        majObservateur();
+                        this.pause();
                     }
                     joueur.setPiece_suivante(null);
                 }

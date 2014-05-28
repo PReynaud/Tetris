@@ -131,28 +131,30 @@ public class FenetrePrincipale extends JFrame implements Observer {
             this.piece_suivante.update(m.getJoueur().getPiece_suivante());
             this.piece_conservee.update(m.getJoueur().getPiece_conservee());
             this.informations.update(m.getJoueur().getNum_Niveau(), m.getJoueur().getBonus(), m.getJoueur().getScore());
-            if (!m.getJoue() && m.getPartie_finie()) {
+            if (!m.getJoue() && m.getPartie_en_cours()) {
                 this.pause.setVisible(true);
                 this.grille.setVisible(false);
                 this.titre_piece_conservee.setVisible(false);
                 this.titre_piece_suivante.setVisible(false);
                 this.piece_conservee.setVisible(false);
                 this.piece_suivante.setVisible(false);
-            } else if (!m.getPartie_finie()) {
-                this.game_over.setVisible(true);
-                this.grille.setVisible(false);
-                this.titre_piece_conservee.setVisible(false);
-                this.titre_piece_suivante.setVisible(false);
-                this.piece_conservee.setVisible(false);
-                this.piece_suivante.setVisible(false);
             } else {
-                this.game_over.setVisible(false);
-                this.pause.setVisible(false);
-                this.grille.setVisible(true);
-                this.titre_piece_conservee.setVisible(true);
-                this.titre_piece_suivante.setVisible(true);
-                this.piece_conservee.setVisible(true);
-                this.piece_suivante.setVisible(true);
+                if (!m.getPartie_en_cours()) {
+                    this.game_over.setVisible(true);
+                    this.grille.setVisible(false);
+                    this.titre_piece_conservee.setVisible(false);
+                    this.titre_piece_suivante.setVisible(false);
+                    this.piece_conservee.setVisible(false);
+                    this.piece_suivante.setVisible(false);
+                } else {
+                    this.game_over.setVisible(false);
+                    this.pause.setVisible(false);
+                    this.grille.setVisible(true);
+                    this.titre_piece_conservee.setVisible(true);
+                    this.titre_piece_suivante.setVisible(true);
+                    this.piece_conservee.setVisible(true);
+                    this.piece_suivante.setVisible(true);
+                }
             }
         }
     }
