@@ -40,14 +40,18 @@ public class Controleur implements KeyListener {
                 modele.chute_rapide();
                 break;
             case KeyEvent.VK_P:
-                if (modele.getJoue()) {
-                    modele.pause();
-                } else {
-                    modele.play();
+                if (modele.getPartie_en_cours()) {
+                    if (modele.getJoue()) {
+                        modele.pause();
+                    } else {
+                        modele.play();
+                    }
                 }
                 break;
             case KeyEvent.VK_SPACE:
-                modele.conserver_piece();
+                if (modele.getJoue()) {
+                    modele.conserver_piece();  
+                }
                 break;
         }
     }
