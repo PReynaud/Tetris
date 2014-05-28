@@ -28,6 +28,7 @@ public class Joueur {
 
     public void setNiveau(int n) {
         this.niveau = n;
+        this.bonus = this.liste_niveau.getIemeNiveau(n).getBonus();
     }
 
     public void setPiece_en_cours(Piece p) {
