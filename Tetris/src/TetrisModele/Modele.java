@@ -129,7 +129,7 @@ public class Modele extends Observable implements Runnable {
 
     public void chute_rapide() {
         if (joue) {
-            MouvementPiece.chute_piece(this.grille, this.joueur.getPiece_en_cours());
+            this.joueur.ajouterScore(MouvementPiece.chute_piece(this.grille, this.joueur.getPiece_en_cours()));
         }
     }
 

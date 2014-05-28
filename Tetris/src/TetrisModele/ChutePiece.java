@@ -19,7 +19,7 @@ public class ChutePiece extends TimerTask {
         int x = this.modele.getJoueur().getPiece_en_cours().getX();
         int y = this.modele.getJoueur().getPiece_en_cours().getY();
         boolean collision;
-        
+
         /*On va d'abord vérifier si il n'y aura pas de collision*/
         collision = test_collision(grille, this.modele.getJoueur().getPiece_en_cours().getPiece(), x + 1, y);
 
@@ -38,13 +38,14 @@ public class ChutePiece extends TimerTask {
                 }
             }
             this.modele.getJoueur().setPiece_en_cours(null);
-            
+            modele.getJoueur().ajouterScore(10);
+
             /*On vérifie si une ligne est supprimée*/
             modele.getJoueur().ajouterScore(this.grille.suppression_ligne());
-            
+
             /*Puis on vérifie le score pour savoir si l'on change de niveau*/
-            if((this.modele.getJoueur().getNiveau().getNumeroNiveau() <= 10) &&
-                    (this.modele.getJoueur().getScore() >= this.modele.getJoueur().getNiveauSup().getScore_a_atteindre())){
+            if ((this.modele.getJoueur().getNiveau().getNumeroNiveau() <= 10)
+                    && (this.modele.getJoueur().getScore() >= this.modele.getJoueur().getNiveauSup().getScore_a_atteindre())) {
                 this.modele.getJoueur().setNiveau(this.modele.getJoueur().getNiveau().getNumeroNiveau() + 1);
                 this.modele.getTimer().cancel();
                 this.modele.getTimer().purge();
@@ -56,7 +57,7 @@ public class ChutePiece extends TimerTask {
 
         modele.majObservateur();
     }
-    
+
     @Override
     public void run() {
         tomber_piece();

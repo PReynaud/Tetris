@@ -58,7 +58,7 @@ public abstract class MouvementPiece {
         }
     }
     
-    public static void chute_piece(Grille g, Piece p){
+    public static int chute_piece(Grille g, Piece p){
         boolean collision;
         int x = p.getX();
         
@@ -68,7 +68,9 @@ public abstract class MouvementPiece {
         /*Puis si l'on peut, on va décaler la pièce vers la gauche*/
         if (!collision) {
             p.setX(x + 1);
+            return 1;
         }
+        return 0;
         
     }
     
