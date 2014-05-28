@@ -3,8 +3,6 @@ package TetrisModele;
 import static TetrisModele.MouvementPiece.test_collision;
 import java.util.Observable;
 import java.util.Timer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Modele extends Observable implements Runnable {
 

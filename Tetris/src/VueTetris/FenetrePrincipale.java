@@ -1,17 +1,13 @@
 package VueTetris;
 
 import TetrisModele.*;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
@@ -130,7 +126,7 @@ public class FenetrePrincipale extends JFrame implements Observer {
             this.grille.update(m.getGrille(), m.getJoueur().getPiece_en_cours());
             this.piece_suivante.update(m.getJoueur().getPiece_suivante());
             this.piece_conservee.update(m.getJoueur().getPiece_conservee());
-            this.informations.update(m.getJoueur().getNum_Niveau(), m.getJoueur().getBonus(), m.getJoueur().getScore());
+           this.informations.update(m.getJoueur().getNum_Niveau(), m.getJoueur().getBonus(), m.getJoueur().getScore());
             if (!m.getJoue() && m.getPartie_en_cours()) {
                 this.pause.setVisible(true);
                 this.grille.setVisible(false);
