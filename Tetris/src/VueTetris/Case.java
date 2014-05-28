@@ -12,13 +12,11 @@ public class Case extends JPanel {
 
     public Case() {
         super();
-        Border blackline = BorderFactory.createLineBorder(Color.GRAY,1);
-        this.setBorder(blackline);    
+        Border line = BorderFactory.createLineBorder(Color.GRAY, 1);
+        this.setBorder(line);
     }
-    
-    public void modifier_couleur(Couleur c){
+
+    public void modifier_couleur(Couleur c) {
         setBackground(c.getCouleur());
     }
-
-
 }

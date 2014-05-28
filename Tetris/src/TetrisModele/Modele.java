@@ -1,5 +1,6 @@
 package TetrisModele;
 
+import static TetrisModele.MouvementPiece.test_collision;
 import java.util.Observable;
 import java.util.Timer;
 import java.util.logging.Level;
@@ -151,9 +152,15 @@ public class Modele extends Observable implements Runnable {
                 this.joueur.setPiece_conservee(this.joueur.getPiece_en_cours());
                 this.joueur.setPiece_en_cours(null);
             } else {
+                int x = this.joueur.getPiece_en_cours().getX();
+                int y = this.joueur.getPiece_en_cours().getY();
+                if(!test_collision(this.grille, this.joueur.getPiece_conservee().getPiece(), x, y)){
                 this.joueur.setPiece_en_cours(this.joueur.getPiece_conservee());
+                this.joueur.getPiece_en_cours().setX(x);
+                this.joueur.getPiece_en_cours().setY(y);
                 this.joueur.setPiece_conservee(null);
                 this.joueur.supprimerBonus();
+                }
             }
         }
     }

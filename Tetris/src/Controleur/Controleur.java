@@ -4,7 +4,8 @@ import TetrisModele.Modele;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Controleur implements KeyListener{
+public class Controleur implements KeyListener {
+
     Modele modele;
 
     public Controleur(Modele m) {
@@ -39,10 +40,11 @@ public class Controleur implements KeyListener{
                 modele.chute_rapide();
                 break;
             case KeyEvent.VK_P:
-                if(modele.getJoue())
+                if (modele.getJoue()) {
                     modele.pause();
-                else
+                } else {
                     modele.play();
+                }
                 break;
             case KeyEvent.VK_SPACE:
                 modele.conserver_piece();
